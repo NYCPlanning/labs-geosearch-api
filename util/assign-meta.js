@@ -30,7 +30,6 @@ function assignMeta(features) {
         var feature = features.filter(d => d.properties.id === result._id)[0];
         Object.assign(feature.properties, meta);
       })
-      return features;
 
   }, function (err) {
       console.trace(err.message);
