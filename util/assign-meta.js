@@ -25,10 +25,12 @@ function assignMeta(features) {
     }
   }).then(function (resp) {
       var hits = resp.hits.hits;
-      hits.forEach((result, i) => {
+      hits.forEach((result) => {
         var meta = result._source.meta;
-        Object.assign(features[i].properties, meta);
+        var feature = features.filter(d => d.properties.id === result._id)[0];
+        Object.assign(feature.properties, meta);
       })
+      return features;
 
   }, function (err) {
       console.trace(err.message);
