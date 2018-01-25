@@ -27,6 +27,8 @@ function assignMeta(features) {
       var hits = resp.hits.hits;
       hits.forEach((result) => {
         var meta = result._source.meta;
+        delete meta.id;
+        delete meta.type;
         var feature = features.filter(d => d.properties.id === result._id)[0];
         Object.assign(feature.properties, meta);
       })
