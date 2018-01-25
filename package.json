@@ -18,6 +18,7 @@
     "jimp": "^0.2.28",
     "merge-images": "^1.0.5",
     "numeral": "^2.0.6",
+    "pelias-config": "^2.13.0",
     "proj4": "^2.4.4",
     "request": "^2.83.0",
     "request-promise": "^4.2.2",

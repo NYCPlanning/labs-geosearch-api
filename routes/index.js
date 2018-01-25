@@ -1,8 +1,8 @@
-const express = require('express');
-const autocomplete = require('./autocomplete');
-const search = require('./search');
+var express = require('express');
+var autocomplete = require('./autocomplete');
+var search = require('./search');
 
-const router = express.Router();
+var router = express.Router();
 
 router.use('/v1/autocomplete', autocomplete);
 router.use('/v1/search', search);

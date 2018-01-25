@@ -1,25 +1,19 @@
-const express = require('express');
+var express = require('express');
+var rp = require('request-promise');
+var config = require('pelias-config').generate();
+var assignMeta = require('../util/assign-meta');
+var peliasProxy = require('../util/pelias-proxy');
 
-const router = express.Router();
+var router = express.Router();
 
 router.get('/', (req, res) => {
-  const { q } = req.query;
-
-  Promise.all([
-    mapzen(q),
-    neighborhood(q),
-    pluto(q),
-    zoningDistrict(q),
-    zoningMapAmendment(q),
-    specialPurposeDistrict(q),
-    commercialOverlay(q),
-  ])
-    .then((values) => {
-      const [addresses, neighborhoods, lots, zoningDistricts, zmas, spdistricts, commercialOverlay] = values;
-      const responseArray = [];
-      res.json(responseArray.concat(addresses, neighborhoods, lots, zoningDistricts, zmas, spdistricts, commercialOverlay));
-    }).catch((reason) => {
-      console.error(reason); // eslint-disable-line
+  peliasProxy(req)
+    .then((data) => {
+      // append metadata
+      assignMeta(data.features)
+        .then(() => {
+          res.send(data);
+        });
     });
 });
 

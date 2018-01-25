@@ -1,0 +1,10 @@
+{
+  "esclient": {
+    "hosts": [{
+      "host": "localhost"
+    }]
+  },
+  "api": {
+    "host": "localhost"
+  }
+}
