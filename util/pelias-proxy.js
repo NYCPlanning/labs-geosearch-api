@@ -10,6 +10,9 @@ function peliasProxy(req) {
   return rp(peliasURL)
     .then((body) => {
       return JSON.parse(body)
+    })
+    .catch((err) => {
+      return JSON.parse(err.response.body)
     });
 }
 
