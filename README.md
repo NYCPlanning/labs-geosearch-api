@@ -1,5 +1,5 @@
-# labs-geaosearch-api
-An express.js api that proxies requests to a pelias instance, appending metadata to the response. Part of the NYC Geosearch Geocoder Project
+# labs-geosearch-api
+An express.js api that proxies requests to a pelias instance, appending metadata to the response. Part of the NYC Geosearch Geocoder Project.
 
 This api exists as a workaround for a current limitation in the Pelias open source geocoder.  It's not possible to add custom metadata to Pelias responses, even if you can get the data into the Pelias database.
 
